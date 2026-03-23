@@ -94,7 +94,7 @@
   }
 
   .glass {
-    @apply bg-card/60 backdrop-blur-xl;
-    border: 1px solid hsl(var(--border) / 0.5);
+    @apply bg-card/80 backdrop-blur-xl;
+    border: 1px solid hsl(var(--border));
   }
 }
