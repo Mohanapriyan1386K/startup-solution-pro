@@ -77,9 +77,11 @@
     box-shadow: 0 0 30px -10px hsl(var(--primary) / 0.3);
   }
 
-
-
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl;
+    border: 1px solid hsl(var(--border));
   }
+}
 
   .glow {
     box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.4);
