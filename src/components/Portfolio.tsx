@@ -35,7 +35,7 @@ const Portfolio = () => (
             className="group glass rounded-2xl overflow-hidden cursor-pointer"
           >
             {/* Image placeholder */}
-            <div className={`h-48 bg-gradient-to-br ${p.color} opacity-30 group-hover:opacity-50 transition-opacity flex items-center justify-center`}>
+            <div className="h-48 bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
               <span className="font-heading text-xl font-bold text-foreground/60">{p.title}</span>
             </div>
             <div className="p-5 flex items-center justify-between">
