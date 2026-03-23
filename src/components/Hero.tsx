@@ -70,15 +70,6 @@ const Hero = () => {
             </p>
             <p className="text-sm text-primary mt-1">🔥 4-Page Package — Only ₹2,000</p>
           </motion.div>
-            className="inline-block glass rounded-xl px-6 py-4 mb-10"
-          >
-            <p className="text-lg font-heading font-semibold">
-              Landing Page Website{" "}
-              <span className="line-through text-muted-foreground">₹999</span>{" "}
-              <span className="gradient-text text-2xl font-bold">₹499</span>
-            </p>
-            <p className="text-sm text-primary mt-1">🔥 Limited Offer — First 3 Clients Only</p>
-          </motion.div>
 
           {/* CTAs */}
           <motion.div
