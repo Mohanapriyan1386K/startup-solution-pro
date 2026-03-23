@@ -6,38 +6,38 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 210 40% 96%;
+    --background: 0 0% 100%;
+    --foreground: 150 20% 10%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 40% 96%;
+    --card: 140 20% 97%;
+    --card-foreground: 150 20% 10%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 20% 10%;
 
-    --primary: 172 66% 50%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 152 60% 42%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 250 60% 60%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 152 30% 90%;
+    --secondary-foreground: 152 40% 20%;
 
-    --muted: 220 14% 16%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 140 15% 94%;
+    --muted-foreground: 150 10% 45%;
 
-    --accent: 172 66% 50%;
-    --accent-foreground: 220 20% 6%;
+    --accent: 152 60% 42%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 172 66% 50%;
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 152 60% 42%;
 
     --radius: 0.75rem;
 
-    --gradient-start: 172 66% 50%;
-    --gradient-end: 250 60% 60%;
+    --gradient-start: 152 60% 42%;
+    --gradient-end: 160 70% 36%;
 
     --sidebar-background: 220 18% 8%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -94,7 +94,7 @@
   }
 
   .glass {
-    @apply bg-card/60 backdrop-blur-xl;
-    border: 1px solid hsl(var(--border) / 0.5);
+    @apply bg-card/80 backdrop-blur-xl;
+    border: 1px solid hsl(var(--border));
   }
 }
