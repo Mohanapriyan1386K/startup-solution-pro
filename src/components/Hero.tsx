@@ -14,7 +14,7 @@ const Hero = () => {
         height={1080}
       />
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-background/80" />
 
       {/* Floating particles */}
       {[...Array(6)].map((_, i) => (
