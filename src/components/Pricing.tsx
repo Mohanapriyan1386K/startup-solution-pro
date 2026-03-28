@@ -61,7 +61,7 @@ const Pricing = () => (
           >
             <div className="relative glass rounded-2xl p-8 text-center h-full flex flex-col">
               {plan.badge && (
-                <div className="inline-flex items-center gap-1.5 gradient-bg text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full mb-4 mx-auto">
+                <div className="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground text-xs font-bold px-4 py-1.5 rounded-full mb-4 mx-auto">
                   <Star size={14} /> {plan.badge}
                 </div>
               )}
@@ -72,7 +72,7 @@ const Pricing = () => (
               <p className="text-sm text-muted-foreground mb-6">{plan.pages}</p>
 
               <div className="mb-8">
-                <span className="text-5xl font-heading font-bold gradient-text">{plan.price}</span>
+                <span className="text-5xl font-heading font-bold text-secondary">{plan.price}</span>
               </div>
 
               <ul className="text-left space-y-3 mb-8 flex-1">

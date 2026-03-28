@@ -83,10 +83,10 @@ const Hero = () => {
           >
             <p className="text-lg font-heading font-semibold text-foreground">
               Starting from{" "}
-              <span className="text-primary text-2xl font-bold">₹999</span>
+              <span className="text-secondary text-2xl font-bold">₹999</span>
               {" "}per page
             </p>
-            <p className="text-sm text-primary mt-1">🔥 4-Page Package — Only ₹2,000</p>
+            <p className="text-sm text-secondary mt-1">🔥 4-Page Package — Only ₹2,000</p>
           </motion.div>
 
           {/* CTAs */}

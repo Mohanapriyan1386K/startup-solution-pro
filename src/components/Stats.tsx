@@ -37,7 +37,7 @@ const Counter = ({ value, suffix }: { value: number; suffix: string }) => {
   }, [value]);
 
   return (
-    <div ref={ref} className="text-4xl md:text-5xl font-heading font-bold text-primary">
+    <div ref={ref} className="text-4xl md:text-5xl font-heading font-bold text-secondary">
       {display}
       {suffix}
     </div>
