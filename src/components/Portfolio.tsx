@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import portfolio1 from "@/assets/portfolio-1.jpg";
+import portfolio2 from "@/assets/portfolio-2.jpg";
+import portfolio3 from "@/assets/portfolio-3.jpg";
+import portfolio4 from "@/assets/portfolio-4.jpg";
 
 const projects = [
-  { title: "Startup Landing Page", category: "Landing Page" },
-  { title: "Business Website", category: "Corporate" },
-  { title: "Product Showcase", category: "E-commerce" },
-  { title: "Personal Portfolio", category: "Portfolio" },
+  { title: "Startup Landing Page", category: "Landing Page", image: portfolio1 },
+  { title: "Business Website", category: "Corporate", image: portfolio2 },
+  { title: "Product Showcase", category: "E-commerce", image: portfolio3 },
+  { title: "Personal Portfolio", category: "Portfolio", image: portfolio4 },
 ];
 
 const Portfolio = () => (
@@ -18,7 +22,7 @@ const Portfolio = () => (
         className="text-center mb-16"
       >
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-          Recent <span className="gradient-text">Projects</span>
+          Recent <span className="text-primary">Projects</span>
         </h2>
         <p className="text-muted-foreground">A glimpse of what I've built.</p>
       </motion.div>
@@ -34,9 +38,15 @@ const Portfolio = () => (
             whileHover={{ y: -6 }}
             className="group glass rounded-2xl overflow-hidden cursor-pointer"
           >
-            {/* Image placeholder */}
-            <div className="h-48 bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-              <span className="font-heading text-xl font-bold text-foreground/60">{p.title}</span>
+            <div className="h-48 overflow-hidden">
+              <img
+                src={p.image}
+                alt={p.title}
+                loading="lazy"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
             <div className="p-5 flex items-center justify-between">
               <div>

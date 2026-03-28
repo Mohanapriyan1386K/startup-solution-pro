@@ -1,32 +1,41 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-
-const FloatingOrb = ({ className }: { className?: string }) => (
-  <div
-    className={`absolute rounded-full blur-3xl opacity-20 animate-pulse-glow ${className}`}
-  />
-);
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background effects */}
-      <FloatingOrb className="w-96 h-96 bg-primary -top-20 -left-20" />
-      <FloatingOrb className="w-80 h-80 bg-secondary bottom-20 right-10" />
-      <FloatingOrb className="w-64 h-64 bg-primary top-1/2 left-1/2 -translate-x-1/2" />
+      {/* Background image */}
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+        width={1920}
+        height={1080}
+      />
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-background/70" />
 
-      {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border)/0.15)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/0.15)_1px,transparent_1px)] bg-[size:60px_60px]" />
-
-      {/* 3D rotating element */}
-      <div className="absolute right-10 top-1/3 hidden lg:block">
-        <div className="w-64 h-64 animate-spin-slow" style={{ perspective: "800px" }}>
-          <div
-            className="w-full h-full rounded-2xl gradient-bg opacity-10"
-            style={{ transform: "rotateX(45deg) rotateZ(45deg)" }}
-          />
-        </div>
-      </div>
+      {/* Floating particles */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 rounded-full bg-primary/40"
+          style={{
+            top: `${15 + i * 14}%`,
+            left: `${10 + i * 15}%`,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            opacity: [0.3, 0.8, 0.3],
+          }}
+          transition={{
+            duration: 3 + i * 0.5,
+            repeat: Infinity,
+            delay: i * 0.4,
+          }}
+        />
+      ))}
 
       <div className="container relative z-10 px-6 text-center">
         <motion.div
@@ -48,13 +57,22 @@ const Hero = () => {
           </motion.div>
 
           <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="gradient-text">Startup</span>{" "}
+            <span className="text-primary">Startup</span>{" "}
             <span className="text-foreground">Solution</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-4">
             Modern Websites for Growing Businesses
           </p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-sm text-muted-foreground/80 max-w-xl mx-auto mb-8"
+          >
+            We build stunning, high-converting websites that help startups and businesses attract customers and grow online.
+          </motion.p>
 
           {/* Offer */}
           <motion.div
@@ -65,7 +83,7 @@ const Hero = () => {
           >
             <p className="text-lg font-heading font-semibold text-foreground">
               Starting from{" "}
-              <span className="gradient-text text-2xl font-bold">₹999</span>
+              <span className="text-primary text-2xl font-bold">₹999</span>
               {" "}per page
             </p>
             <p className="text-sm text-primary mt-1">🔥 4-Page Package — Only ₹2,000</p>
@@ -80,7 +98,7 @@ const Hero = () => {
           >
             <a
               href="#contact"
-              className="gradient-bg text-primary-foreground font-semibold px-8 py-3.5 rounded-lg text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 glow"
+              className="bg-primary text-primary-foreground font-semibold px-8 py-3.5 rounded-lg text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 glow"
             >
               Book Now <ArrowRight size={18} />
             </a>
