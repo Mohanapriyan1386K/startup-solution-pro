@@ -19,9 +19,9 @@ const TrustedBy = () => (
         {[...clients, ...clients].map((name, i) => (
           <div
             key={i}
-            className="mx-8 flex-shrink-0 glass rounded-xl px-8 py-4 flex items-center justify-center"
+            className="mx-8 flex-shrink-0 bg-primary rounded-xl px-8 py-4 flex items-center justify-center"
           >
-            <span className="font-heading font-semibold text-lg text-muted-foreground/70">
+            <span className="font-heading font-semibold text-lg text-primary-foreground">
               {name}
             </span>
           </div>
