@@ -1,11 +1,11 @@
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 50, suffix: "+", label: "Projects Delivered" },
-  { value: 30, suffix: "+", label: "Happy Clients" },
-  { value: 99, suffix: "%", label: "Client Satisfaction" },
-  { value: 3, suffix: "-5 Days", label: "Fast Delivery" },
+  { value: 5, suffix: "+", label: "Projects Completed" },
+  { value: 3, suffix: "", label: "Freelance Clients" },
+  { value: 100, suffix: "%", label: "Custom Design Focus" },
+  { value: 3, suffix: "-5 Days", label: "Typical Delivery Window" },
 ];
 
 const Counter = ({ value, suffix }: { value: number; suffix: string }) => {

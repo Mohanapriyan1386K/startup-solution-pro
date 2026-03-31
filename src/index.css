@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 150 10% 10%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 150 5% 96%;
-    --card-foreground: 150 10% 10%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 150 10% 10%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 155 60% 35%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 152 90% 41%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 24 85% 55%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 6%;
 
-    --muted: 150 5% 92%;
-    --muted-foreground: 150 5% 40%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 72%;
 
-    --accent: 24 85% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 152 55% 16%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 5% 88%;
-    --input: 150 5% 88%;
-    --ring: 155 60% 35%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 152 90% 41%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 150 5% 97%;
-    --sidebar-foreground: 150 10% 10%;
-    --sidebar-primary: 155 60% 35%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 24 85% 55%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 150 5% 88%;
-    --sidebar-ring: 155 60% 35%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 152 90% 41%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 152 55% 16%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 152 90% 41%;
   }
 }
 
@@ -54,20 +54,26 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(circle at top left, hsl(var(--primary) / 0.14), transparent 28%),
+      radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 24%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(0 0% 3%));
+    min-height: 100vh;
   }
 
   html {
     scroll-behavior: smooth;
+    background: hsl(var(--background));
   }
 }
 
 @layer utilities {
   .gradient-text {
-    @apply text-primary;
+    @apply bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent;
   }
 
   .gradient-bg {
-    @apply bg-primary;
+    @apply bg-gradient-to-r from-primary to-emerald-400;
   }
 
   .glow {
@@ -77,7 +83,9 @@
   .glass {
     @apply bg-card/80 backdrop-blur-xl;
     border: 1px solid hsl(var(--border));
-    box-shadow: 0 4px 20px -4px hsl(var(--foreground) / 0.05);
+    box-shadow:
+      0 12px 40px -20px hsl(var(--primary) / 0.35),
+      0 4px 20px -4px hsl(var(--foreground) / 0.08);
   }
 }
 

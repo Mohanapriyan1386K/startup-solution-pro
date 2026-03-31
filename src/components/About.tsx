@@ -31,14 +31,13 @@ const About = () => (
                 Mohana Priyan
               </h3>
               <p className="text-primary text-sm font-medium mb-4">
-                Founder & Web Developer
+                Freelance Web Designer & Developer
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Passionate web developer specializing in modern UI, smooth animations,
-                and responsive design. I help small businesses establish their online
-                presence with beautiful, conversion-focused websites that stand out
-                from the competition. Every project is crafted with attention to detail
-                and a focus on delivering real business results.
+                I design and build modern websites for startups, local businesses,
+                and personal brands. My focus is clean UI, responsive layouts,
+                smooth interactions, and practical design that helps each client
+                present their work clearly and professionally online.
               </p>
             </div>
           </div>

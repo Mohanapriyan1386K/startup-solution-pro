@@ -1,15 +1,18 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "TechStart", "GrowthCo", "InnovateLab", "ScaleUp", "DigitalEdge",
-  "FutureBiz", "StartFlow", "CloudNine", "NextGen", "ApexVentures",
+  "Startup Landing Pages",
+  "Business Websites",
+  "Portfolio Sites",
+  "Product Showcases",
+  "Invitation Designs",
 ];
 
 const TrustedBy = () => (
   <section className="py-16 relative overflow-hidden">
     <div className="container px-6 mx-auto">
       <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-widest">
-        Trusted by businesses worldwide
+        Freelance work across 5 project types
       </p>
     </div>
 

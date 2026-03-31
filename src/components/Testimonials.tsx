@@ -6,7 +6,7 @@ const testimonials = [
   {
     name: "Rahul Sharma",
     role: "CEO, TechStart",
-    text: "Startup Solution delivered an incredible website for us. The design quality and attention to detail exceeded our expectations. Our conversions went up by 40%!",
+    text: "Maven Technology delivered an incredible website for us. The design quality and attention to detail exceeded our expectations. Our conversions went up by 40%!",
   },
   {
     name: "Priya Patel",
@@ -17,11 +17,6 @@ const testimonials = [
     name: "Arjun Mehta",
     role: "CTO, InnovateLab",
     text: "The website looks professional and loads incredibly fast. Our clients are impressed with the modern design. Worth every rupee!",
-  },
-  {
-    name: "Sneha Reddy",
-    role: "Marketing Head, ScaleUp",
-    text: "We needed a website that stands out and converts visitors into leads. Startup Solution nailed it. The UI is top-notch and very user-friendly.",
   },
 ];
 

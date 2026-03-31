@@ -30,9 +30,10 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <a href="#" className="font-heading text-xl font-bold gradient-text">
-          Startup Solution
-        </a>
+        {/* <a href="#" className="font-heading text-xl font-bold gradient-text">
+          Maven Technology
+        </a> */}
+        <img src="./remove.png" alt=""  width={70} />
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">

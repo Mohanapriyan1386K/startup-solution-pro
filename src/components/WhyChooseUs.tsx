@@ -19,7 +19,7 @@ const WhyChooseUs = () => (
         className="text-center mb-16"
       >
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-          Why <span className="gradient-text">Choose Us</span>
+          Why <span className="gradient-text">Work With Me</span>
         </h2>
       </motion.div>
 
