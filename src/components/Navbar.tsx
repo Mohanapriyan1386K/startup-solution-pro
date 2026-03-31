@@ -85,7 +85,7 @@ const Navbar = () => {
               onClick={() => setMobileOpen(false)}
               className="gradient-bg text-primary-foreground text-center font-semibold px-5 py-2 rounded-lg"
             >
-              Book Now
+              Book Nows
             </a>
           </div>
         </motion.div>
