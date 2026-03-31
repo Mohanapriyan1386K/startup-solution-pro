@@ -33,12 +33,24 @@ const About = () => (
               <p className="text-primary text-sm font-medium mb-4">
                 Freelance Web Designer & Developer
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                I design and build modern websites for startups, local businesses,
-                and personal brands. My focus is clean UI, responsive layouts,
-                smooth interactions, and practical design that helps each client
-                present their work clearly and professionally online.
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                I work with founders, agencies, and local businesses to design websites that feel premium and
+                trustworthy. Every project is built for clarity, speed, and conversion, so your brand looks
+                professional and clients take action.
               </p>
+              <div className="grid gap-3 text-sm text-muted-foreground">
+                {[
+                  "Strategy-driven layout and content structure",
+                  "Responsive design that looks perfect on mobile",
+                  "Clean development with fast performance",
+                  "Clear communication and on-time delivery",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ const Counter = ({ value, suffix }: { value: number; suffix: string }) => {
   }, [value]);
 
   return (
-    <div ref={ref} className="text-4xl md:text-5xl font-heading font-bold text-secondary">
+    <div ref={ref} className="text-4xl md:text-5xl font-heading font-bold text-[#1f4ac8]">
       {display}
       {suffix}
     </div>
@@ -58,7 +58,7 @@ const Stats = () => (
               transition={{ delay: i * 0.1 }}
               className="text-center"
             >
-              <Counter value={s.value} suffix={s.suffix} />
+              <Counter  value={s.value} suffix={s.suffix} />
               <p className="text-sm text-muted-foreground mt-2">{s.label}</p>
             </motion.div>
           ))}

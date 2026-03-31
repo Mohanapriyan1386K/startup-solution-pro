@@ -4,19 +4,16 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background image */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 ">
       <img
-        src={heroBg}
+        src={""}
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}
         height={1080}
       />
-      {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-background/80" />
 
-      {/* Floating particles */}
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
@@ -43,7 +40,6 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Badge */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -52,7 +48,7 @@ const Hero = () => {
           >
             <Sparkles size={16} className="text-primary" />
             <span className="text-sm text-muted-foreground">
-              Free Email Contact Integration Included
+              Freelance web partner for startups and growing businesses
             </span>
           </motion.div>
 
@@ -62,19 +58,39 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-4">
-            Modern Websites for Growing Businesses
+            Premium websites that build trust and convert clients
           </p>
 
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             className="text-sm text-muted-foreground/80 max-w-xl mx-auto mb-8"
           >
-            I create clean, modern websites for startups, businesses, and personal brands that want a strong online presence.
-          </motion.p>
+            I help founders and local businesses present their brand with clarity, speed, and professional design. From strategy
+            to launch, you get a clean, high-performing site that looks great and brings more inquiries.
+          </motion.p> */}
 
-          {/* Offer */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="flex flex-wrap justify-center gap-3 mb-10"
+          >
+            {[
+              "Fast delivery in 7-10 days",
+              "Mobile-first, modern UI",
+              "Clear copy and structure",
+            ].map((item) => (
+              <span
+                key={item}
+                className="glass rounded-full px-4 py-2 text-xs font-semibold text-muted-foreground"
+              >
+                {item}
+              </span>
+            ))}
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -83,13 +99,12 @@ const Hero = () => {
           >
             <p className="text-lg font-heading font-semibold text-foreground">
               Starting from{" "}
-              <span className="text-secondary text-2xl font-bold">₹999</span>
+              <span className="text-primary text-2xl font-bold tracking-tight">INR 999</span>
               {" "}per page
             </p>
-            <p className="text-sm text-secondary mt-1">4-Page Package | Only ₹2,000</p>
+            <p className="text-sm text-[#1B45A7] mt-1">4-Page Package | Only INR 2,000</p>
           </motion.div>
 
-          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -100,19 +115,18 @@ const Hero = () => {
               href="#contact"
               className="bg-primary text-primary-foreground font-semibold px-8 py-3.5 rounded-lg text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 glow"
             >
-              Book Now <ArrowRight size={18} />
+              Book a Call <ArrowRight size={18} />
             </a>
             <a
               href="#portfolio"
               className="glass text-foreground font-semibold px-8 py-3.5 rounded-lg text-lg hover:border-primary transition-colors"
             >
-              View Portfolio
+              View Work
             </a>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}

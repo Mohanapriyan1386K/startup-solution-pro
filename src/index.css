@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
+    --background: 220 33% 98%;
+    --foreground: 222 30% 14%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 30% 14%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 30% 14%;
 
-    --primary: 152 90% 41%;
-    --primary-foreground: 0 0% 4%;
+    --primary: 222 72% 38%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 6%;
+    --secondary: 220 32% 92%;
+    --secondary-foreground: 222 35% 22%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 72%;
+    --muted: 220 20% 94%;
+    --muted-foreground: 222 16% 42%;
 
-    --accent: 152 55% 16%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 220 40% 90%;
+    --accent-foreground: 222 35% 22%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 152 90% 41%;
+    --border: 220 18% 86%;
+    --input: 220 18% 86%;
+    --ring: 222 72% 38%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 6%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 152 90% 41%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 152 55% 16%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 152 90% 41%;
+    --sidebar-background: 220 33% 98%;
+    --sidebar-foreground: 222 30% 14%;
+    --sidebar-primary: 222 72% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 40% 90%;
+    --sidebar-accent-foreground: 222 35% 22%;
+    --sidebar-border: 220 18% 86%;
+    --sidebar-ring: 222 72% 38%;
   }
 }
 
@@ -55,9 +55,9 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     background-image:
-      radial-gradient(circle at top left, hsl(var(--primary) / 0.14), transparent 28%),
-      radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 24%),
-      linear-gradient(180deg, hsl(var(--background)), hsl(0 0% 3%));
+      radial-gradient(circle at top left, hsl(var(--primary) / 0.16), transparent 24%),
+      radial-gradient(circle at top right, hsl(var(--secondary) / 0.7), transparent 26%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(220 28% 96%));
     min-height: 100vh;
   }
 
@@ -68,12 +68,12 @@
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent;
+.gradient-text {
+    @apply bg-gradient-to-r from-primary via-blue-700 to-sky-500 bg-clip-text text-transparent;
   }
 
   .gradient-bg {
-    @apply bg-gradient-to-r from-primary to-emerald-400;
+    @apply bg-gradient-to-r from-primary to-sky-500;
   }
 
   .glow {

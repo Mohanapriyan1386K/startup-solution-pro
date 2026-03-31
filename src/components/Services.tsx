@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { Layout, Palette, Code2, Mail, Sparkles } from "lucide-react";
+import { Layout, Palette, Code2, Mail, Sparkles, Rocket } from "lucide-react";
 
 const services = [
-  { icon: Layout, title: "Landing Page Development", desc: "High-converting landing pages built for speed and results." },
-  { icon: Palette, title: "UI/UX Design", desc: "Beautiful, intuitive interfaces that users love." },
-  { icon: Code2, title: "React Development", desc: "Modern web apps using React.js and the latest tools." },
-  { icon: Mail, title: "Email Integration", desc: "Contact forms that open directly in the client's email app with no backend needed." },
-  { icon: Sparkles, title: "Animations & 3D Effects", desc: "Smooth transitions and interactive visuals that captivate." },
+  { icon: Layout, title: "Landing Pages", desc: "High-converting pages designed for lead capture and sales." },
+  { icon: Palette, title: "Brand & UI Design", desc: "Modern, consistent design that makes your business look premium." },
+  { icon: Code2, title: "Custom Development", desc: "Fast, responsive websites built with clean, scalable code." },
+  { icon: Mail, title: "Lead Capture Setup", desc: "Contact forms, WhatsApp, and email integrations ready to use." },
+  { icon: Sparkles, title: "Motion & Micro-Interactions", desc: "Subtle animations that feel high-end and trustworthy." },
+  { icon: Rocket, title: "Performance & SEO", desc: "Optimized pages for speed, search, and mobile rankings." },
 ];
 
 const Services = () => (
@@ -19,10 +20,10 @@ const Services = () => (
         className="text-center mb-16"
       >
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-          What I <span className="gradient-text">Offer</span>
+          Services That <span className="gradient-text">Grow</span> Your Business
         </h2>
         <p className="text-muted-foreground max-w-lg mx-auto">
-          End-to-end web development services tailored for startups and small businesses.
+          A complete, professional website package built to attract clients and build trust.
         </p>
       </motion.div>
 
