@@ -35,14 +35,19 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between py-4 px-6">
-          {/* <a href="#" className="font-heading text-xl font-bold gradient-text">
-            Maven Technology
-          </a> */}
-          <img
-            src="./remove.png"
-            alt="Logo"
-            className="h-10 w-auto sm:h-12"
-          />
+          <a href="#" className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl  ">
+              <img src="./blue.png" alt="" className="h-12 " />
+            </div>
+            <div className="hidden sm:block">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground">
+                Maven Technology
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Freelance web design & development
+              </p>
+            </div>
+          </a>
 
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
@@ -95,7 +100,7 @@ const Navbar = () => {
                 onClick={() => setMobileOpen(false)}
                 className="gradient-bg text-primary-foreground text-center font-semibold px-5 py-2 rounded-lg"
               >
-                Book Nows
+                Book Now
               </a>
             </div>
           </motion.div>

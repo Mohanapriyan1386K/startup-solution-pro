@@ -6,17 +6,17 @@ const testimonials = [
   {
     name: "Rahul Sharma",
     role: "CEO, TechStart",
-    text: "Maven Technology delivered an incredible website for us. The design quality and attention to detail exceeded our expectations. Our conversions went up by 40%!",
+    text: "Maven Technology delivered an incredible website for us. The design quality and attention to detail exceeded our expectations. Our conversions went up by 40%.",
   },
   {
     name: "Priya Patel",
     role: "Founder, GrowthCo",
-    text: "Fast delivery, beautiful design, and amazing support. The best investment we made for our online presence. Highly recommended for any startup!",
+    text: "Fast delivery, beautiful design, and clear communication. The best investment we made for our online presence.",
   },
   {
     name: "Arjun Mehta",
     role: "CTO, InnovateLab",
-    text: "The website looks professional and loads incredibly fast. Our clients are impressed with the modern design. Worth every rupee!",
+    text: "The website looks professional and loads incredibly fast. Our clients are impressed with the modern design.",
   },
 ];
 

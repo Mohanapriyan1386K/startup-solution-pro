@@ -1,35 +1,48 @@
 import { motion } from "framer-motion";
-import { Check, Zap, Star } from "lucide-react";
+import { Check, Star } from "lucide-react";
 
 const plans = [
   {
     name: "Starter",
     pages: "1 Page",
-    price: "₹999",
+    price: "INR 999",
     badge: null,
     features: [
-      "Single Landing Page",
-      "Fully Responsive Design",
-      "Modern UI/UX",
-      "Smooth Animations",
-      "EmailJS Contact Form",
-      "Fast Delivery (3-5 days)",
+      "Single landing page",
+      "Mobile-first design",
+      "Lead capture section",
+      "Basic animations",
+      "Email or WhatsApp integration",
+      "Delivery in 2-3 days",
     ],
   },
   {
     name: "Growth",
     pages: "4 Pages",
-    price: "₹2,000",
+    price: "INR 2,000",
     badge: "BEST VALUE",
     features: [
-      "4 Custom Pages",
-      "Fully Responsive Design",
-      "Modern UI/UX",
-      "Smooth Animations",
-      "EmailJS Contact Form",
-      "Fast Delivery (5-7 days)",
-      "1 Revision Round Free",
-      "SEO Optimized",
+      "4 custom pages",
+      "Modern UI/UX design",
+      "Smooth animations",
+      "Email or WhatsApp integration",
+      "1 revision round included",
+      "SEO-ready structure",
+      "Delivery in 7-10 days",
+    ],
+  },
+  {
+    name: "Business",
+    pages: "6-8 Pages",
+    price: "INR 4,500",
+    badge: "MOST POPULAR",
+    features: [
+      "Complete business website",
+      "Brand style and layout system",
+      "Advanced sections and FAQ",
+      "Speed and performance optimization",
+      "2 revision rounds included",
+      "Priority support and launch",
     ],
   },
 ];
@@ -44,12 +57,14 @@ const Pricing = () => (
         className="text-center mb-16"
       >
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-          Development<span className="gradient-text">Pricing</span>
+          Professional <span className="gradient-text">Packages</span>
         </h2>
-        <p className="text-muted-foreground">Transparent pricing. No hidden fees.</p>
+        <p className="text-muted-foreground">
+          Clear pricing designed for freelancers, startups, and growing businesses.
+        </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {plans.map((plan, i) => (
           <motion.div
             key={plan.name}
@@ -72,7 +87,9 @@ const Pricing = () => (
               <p className="text-sm text-muted-foreground mb-6">{plan.pages}</p>
 
               <div className="mb-8">
-                <span className="text-5xl font-heading font-bold text-secondary">{plan.price}</span>
+                <span className="text-4xl font-heading font-bold text-primary tracking-tight">
+                  {plan.price}
+                </span>
               </div>
 
               <ul className="text-left space-y-3 mb-8 flex-1">

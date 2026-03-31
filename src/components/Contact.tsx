@@ -64,15 +64,34 @@ const Contact = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-            Book Your <span className="gradient-text">Website Now</span>
+            Let's Build Your <span className="gradient-text">Website</span>
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            Fill out the form below and I'll receive it directly in my inbox.
+            Share your goals and I will propose a clean, professional plan for your business.
           </p>
         </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10">
+          {[
+            { title: "Free discovery call", desc: "Understand your goals and recommend the right package." },
+            { title: "Clear timeline", desc: "Milestones, delivery dates, and updates you can trust." },
+            { title: "Client-first process", desc: "Simple communication and smooth handover." },
+          ].map((item) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass rounded-2xl p-5 text-center"
+            >
+              <p className="font-semibold text-foreground mb-2">{item.title}</p>
+              <p className="text-sm text-muted-foreground">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
