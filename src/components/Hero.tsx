@@ -57,8 +57,8 @@ const Hero = () => {
           </motion.div>
 
           <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="text-primary">Startup</span>{" "}
-            <span className="text-foreground">Solution</span>
+            <span className="text-primary">Maven</span>{" "}
+            <span className="text-foreground">Technology</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-4">
@@ -71,7 +71,7 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
             className="text-sm text-muted-foreground/80 max-w-xl mx-auto mb-8"
           >
-            We build stunning, high-converting websites that help startups and businesses attract customers and grow online.
+            I create clean, modern websites for startups, businesses, and personal brands that want a strong online presence.
           </motion.p>
 
           {/* Offer */}
@@ -86,7 +86,7 @@ const Hero = () => {
               <span className="text-secondary text-2xl font-bold">₹999</span>
               {" "}per page
             </p>
-            <p className="text-sm text-secondary mt-1">🔥 4-Page Package — Only ₹2,000</p>
+            <p className="text-sm text-secondary mt-1">4-Page Package | Only ₹2,000</p>
           </motion.div>
 
           {/* CTAs */}

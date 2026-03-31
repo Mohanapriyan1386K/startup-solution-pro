@@ -5,7 +5,7 @@ const services = [
   { icon: Layout, title: "Landing Page Development", desc: "High-converting landing pages built for speed and results." },
   { icon: Palette, title: "UI/UX Design", desc: "Beautiful, intuitive interfaces that users love." },
   { icon: Code2, title: "React Development", desc: "Modern web apps using React.js and the latest tools." },
-  { icon: Mail, title: "EmailJS Integration", desc: "Contact forms with free email delivery — no backend needed." },
+  { icon: Mail, title: "Email Integration", desc: "Contact forms that open directly in the client's email app with no backend needed." },
   { icon: Sparkles, title: "Animations & 3D Effects", desc: "Smooth transitions and interactive visuals that captivate." },
 ];
 

@@ -2,21 +2,59 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Send, Mail } from "lucide-react";
 
+const contactEmail = "info@maventechnology.in";
+const web3FormsEndpoint = "https://api.web3forms.com/submit";
+
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError("");
     setSending(true);
-    // EmailJS integration placeholder — replace with real IDs
-    // emailjs.send('service_id', 'template_id', form, 'public_key')
-    await new Promise((r) => setTimeout(r, 1200));
-    setSent(true);
-    setSending(false);
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      setError("Web3Forms is not configured yet.");
+      setSending(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(web3FormsEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New website enquiry from ${form.name}`,
+          from_name: form.name,
+          email: form.email,
+          message: form.message,
+          replyto: form.email,
+          to: contactEmail,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error("Web3Forms request failed");
+      }
+
+      setSent(true);
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setSent(false), 4000);
+    } catch {
+      setError("Couldn't send your message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -32,7 +70,7 @@ const Contact = () => {
             Book Your <span className="gradient-text">Website Now</span>
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            Fill out the form below or reach out via email. Let's bring your vision to life.
+            Fill out the form below and I'll receive it directly in my inbox.
           </p>
         </motion.div>
 
@@ -81,15 +119,21 @@ const Contact = () => {
               disabled={sending}
               className="w-full gradient-bg text-primary-foreground font-semibold py-3.5 rounded-lg text-lg hover:opacity-90 transition-opacity glow flex items-center justify-center gap-2 disabled:opacity-60"
             >
-              {sending ? "Sending..." : sent ? "Message Sent! ✓" : (
+              {sending ? "Sending..." : sent ? "Message Sent!" : (
                 <>Send Message <Send size={18} /></>
               )}
             </button>
+
+            {error ? (
+              <p className="text-sm text-red-400 text-center">{error}</p>
+            ) : null}
           </form>
 
           <div className="flex items-center gap-2 justify-center mt-6 text-sm text-muted-foreground">
             <Mail size={16} className="text-primary" />
-            <span>startupsolution@email.com</span>
+            <a href={`mailto:${contactEmail}`} className="hover:text-primary transition-colors">
+              {contactEmail}
+            </a>
           </div>
         </motion.div>
       </div>
