@@ -44,7 +44,7 @@ const Pricing = () => (
         className="text-center mb-16"
       >
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-          Simple <span className="gradient-text">Pricing</span>
+          Development<span className="gradient-text">Pricing</span>
         </h2>
         <p className="text-muted-foreground">Transparent pricing. No hidden fees.</p>
       </motion.div>
