@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, X, Clock, User, Code2, Sparkles } from "lucide-react";
@@ -9,11 +10,16 @@ const ProjectDetail = () => {
   const navigate = useNavigate();
   const [selectedSample, setSelectedSample] = useState<Sample | null>(null);
 
+  const siteUrl = "https://maventechnology.in";
   const project = projects.find((p) => p.id === id);
 
   if (!project) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
+        <Helmet>
+          <title>Project Not Found | Maven Technology</title>
+          <meta name="description" content="The requested project could not be found. Explore our portfolio of modern websites for growing businesses." />
+        </Helmet>
         <div className="text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Project Not Found</h1>
           <button onClick={() => navigate("/")} className="text-primary hover:underline">
@@ -26,6 +32,27 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{project.title} | Maven Technology</title>
+        <meta name="description" content={project.description} />
+        <meta name="robots" content="index,follow" />
+        <meta property="og:title" content={`${project.title} | Maven Technology`} />
+        <meta property="og:description" content={project.description} />
+        <meta
+          property="og:image"
+          content={project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`}
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${siteUrl}/project/${project.id}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${project.title} | Maven Technology`} />
+        <meta name="twitter:description" content={project.description} />
+        <meta
+          name="twitter:image"
+          content={project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`}
+        />
+        <link rel="canonical" href={`${siteUrl}/project/${project.id}`} />
+      </Helmet>
       {/* Hero Banner */}
       <div className="relative h-72 md:h-96 overflow-hidden">
         <img
