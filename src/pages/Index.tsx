@@ -20,11 +20,11 @@ const Index = () => (
       <title>Maven Technology | Modern Websites for Growing Businesses</title>
       <meta
         name="description"
-        content="Maven Technology builds modern websites for growing businesses with a bold black, white, and green brand experience. Get high-converting designs and professional development."
+        content="Maven Technology Private Limited in Coimbatore builds modern websites for growing businesses with a bold black, white, and green brand experience. Get high-converting design and professional development."
       />
       <meta
         name="keywords"
-        content="Maven Technology, web design, website development, modern websites, business websites, landing page design"
+        content="Maven Technology Private Limited, Coimbatore, web design, website development, modern websites, business websites, landing page design"
       />
       <meta name="robots" content="index,follow" />
       <meta property="og:title" content="Maven Technology | Modern Websites for Growing Businesses" />

@@ -48,7 +48,7 @@ const Hero = () => {
           >
             <Sparkles size={16} className="text-primary" />
             <span className="text-sm text-muted-foreground">
-              Freelance web partner for startups and growing businesses
+              Maven Technology Private Limited • Coimbatore
             </span>
           </motion.div>
 
@@ -58,7 +58,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-4">
-            Premium websites that build trust and convert clients
+            Premium websites from Coimbatore that build trust and convert clients
           </p>
 
           {/* <motion.p

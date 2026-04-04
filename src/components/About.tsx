@@ -16,7 +16,7 @@ const About = () => (
             <User size={20} className="text-primary-foreground" />
           </div>
           <h2 className="font-heading text-3xl md:text-4xl font-bold">
-            About <span className="gradient-text">Me</span>
+            About <span className="gradient-text">Maven Technology</span>
           </h2>
         </div>
 
@@ -28,15 +28,15 @@ const About = () => (
             </div>
             <div>
               <h3 className="font-heading text-2xl font-bold text-foreground mb-2">
-                Mohana Priyan
+                Maven Technology Private Limited
               </h3>
               <p className="text-primary text-sm font-medium mb-4">
-                Freelance Web Designer & Developer
+                Coimbatore • Web Design & Development
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                I work with founders, agencies, and local businesses to design websites that feel premium and
-                trustworthy. Every project is built for clarity, speed, and conversion, so your brand looks
-                professional and clients take action.
+                We work with founders, agencies, and local businesses to design websites that feel premium and
+                trustworthy. Based in Coimbatore, every project is built for clarity, speed, and conversion so
+                your brand looks professional and clients take action.
               </p>
               <div className="grid gap-3 text-sm text-muted-foreground">
                 {[
