@@ -11,6 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import TechnologiesSection from "@/components/TechnologiesSection";
 
 const siteUrl = "https://maventechnology.in";
 
@@ -44,11 +45,12 @@ const Index = () => (
     </Helmet>
     <Navbar />
     <Hero />
+    <TechnologiesSection/>
     <TrustedBy />
     <Stats />
     <About />
-    <Services />
-    <Pricing />
+    {/* <Services /> */}
+    {/* <Pricing /> */}
     <Portfolio />
     <Testimonials />
     <WhyChooseUs />

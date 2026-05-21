@@ -1,141 +1,189 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import {
+  ArrowRight,
+  Play,
+  Sparkles,
+  Star,
+  Globe,
+  ShieldCheck,
+} from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 ">
-      <img
-        src={""}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover"
-        width={1920}
-        height={1080}
-      />
-      <div className="absolute inset-0 bg-background/80" />
+    <section className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
+      {/* Background Glow */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-[-120px] left-[-100px] w-[400px] h-[400px] bg-blue-600/30 blur-3xl rounded-full" />
+        <div className="absolute bottom-[-120px] right-[-100px] w-[400px] h-[400px] bg-purple-600/20 blur-3xl rounded-full" />
 
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 rounded-full bg-primary/40"
-          style={{
-            top: `${15 + i * 14}%`,
-            left: `${10 + i * 15}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.3, 0.8, 0.3],
-          }}
-          transition={{
-            duration: 3 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.4,
-          }}
-        />
-      ))}
-
-      <div className="container relative z-10 px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-8"
-          >
-            <Sparkles size={16} className="text-primary" />
-            <span className="text-sm text-muted-foreground">
-              Maven Technology Private Limited • Coimbatore
-            </span>
-          </motion.div>
-
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="text-primary">Maven</span>{" "}
-            <span className="text-foreground">Technology</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-4">
-            Premium websites from Coimbatore that build trust and convert clients
-          </p>
-
-          {/* <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-sm text-muted-foreground/80 max-w-xl mx-auto mb-8"
-          >
-            I help founders and local businesses present their brand with clarity, speed, and professional design. From strategy
-            to launch, you get a clean, high-performing site that looks great and brings more inquiries.
-          </motion.p> */}
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="flex flex-wrap justify-center gap-3 mb-10"
-          >
-            {[
-              "Fast delivery in 7-10 days",
-              "Mobile-first, modern UI",
-              "Clear copy and structure",
-            ].map((item) => (
-              <span
-                key={item}
-                className="glass rounded-full px-4 py-2 text-xs font-semibold text-muted-foreground"
-              >
-                {item}
-              </span>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
-            className="inline-block glass rounded-xl px-6 py-4 mb-10"
-          >
-            <p className="text-lg font-heading font-semibold text-foreground">
-              Starting from{" "}
-              <span className="text-primary text-2xl font-bold tracking-tight">INR 999</span>
-              {" "}per page
-            </p>
-            <p className="text-sm text-[#1B45A7] mt-1">4-Page Package | Only INR 2,000</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <a
-              href="#contact"
-              className="bg-primary text-primary-foreground font-semibold px-8 py-3.5 rounded-lg text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 glow"
-            >
-              Book a Call <ArrowRight size={18} />
-            </a>
-            <a
-              href="#portfolio"
-              className="glass text-foreground font-semibold px-8 py-3.5 rounded-lg text-lg hover:border-primary transition-colors"
-            >
-              View Work
-            </a>
-          </motion.div>
-        </motion.div>
+        {/* Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:70px_70px]" />
       </div>
 
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 min-h-screen flex items-center">
+        <div className="grid lg:grid-cols-2 gap-14 items-center w-full">
+          {/* LEFT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 70 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+          >
+            {/* Badge */}
+            {/* <motion.div
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl mb-8"
+            >
+              <Sparkles size={16} className="text-cyan-400" />
+              <span className="text-sm text-gray-300">
+                Premium Web Solutions • Coimbatore
+              </span>
+            </motion.div> */}
+
+            {/* Heading */}
+            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+              We Build
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">
+                Modern Digital
+              </span>
+              Experiences
+            </h1>
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl mb-8">
+              Maven Technology creates high-converting websites and powerful
+              digital products for startups, local businesses, and growing
+              brands.
+            </p>
+
+            {/* Features */}
+            <div className="flex flex-wrap gap-4 mb-10">
+              {[
+                {
+                  icon: <Globe size={16} />,
+                  text: "SEO Optimized",
+                },
+                {
+                  icon: <ShieldCheck size={16} />,
+                  text: "Premium UI/UX",
+                },
+                {
+                  icon: <Star size={16} />,
+                  text: "Fast Delivery",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-3 rounded-xl backdrop-blur-md"
+                >
+                  <div className="text-cyan-400">{item.icon}</div>
+                  <span className="text-sm text-gray-300">{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-5">
+              <a
+                href="#contact"
+                className="group px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-semibold text-lg flex items-center justify-center gap-3 hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(0,153,255,0.4)]"
+              >
+                Start Your Project
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </a>
+
+              <a
+                href="#portfolio"
+                className="px-8 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl text-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3"
+              >
+                <Play size={18} />
+                View Portfolio
+              </a>
+            </div>
+
+            {/* Bottom Stats */}
+            <div className="flex gap-10 mt-14 flex-wrap">
+              {[
+                { number: "50+", label: "Projects" },
+                { number: "98%", label: "Client Satisfaction" },
+                { number: "24/7", label: "Support" },
+              ].map((item, i) => (
+                <div key={i}>
+                  <h3 className="text-3xl font-bold text-white">
+                    {item.number}
+                  </h3>
+                  <p className="text-gray-400 text-sm mt-1">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* RIGHT SIDE CARD */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1 }}
+            className="relative hidden lg:flex justify-center"
+          >
+            {/* Floating Card */}
+            <div className="relative w-[500px] h-[500px] rounded-[40px] bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-2xl overflow-hidden shadow-2xl">
+              {/* Glow */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/20 blur-3xl rounded-full" />
+
+              {/* Mock UI */}
+              <div className="p-8">
+                <div className="flex items-center gap-2 mb-8">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                </div>
+
+                <div className="space-y-5">
+                  <div className="h-14 rounded-xl bg-white/10" />
+                  <div className="grid grid-cols-2 gap-5">
+                    <div className="h-40 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-blue-500/20 border border-white/10" />
+                    <div className="space-y-5">
+                      <div className="h-16 rounded-xl bg-white/10" />
+                      <div className="h-16 rounded-xl bg-white/10" />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    {[1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className="h-24 rounded-xl bg-white/10"
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Elements */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ repeat: Infinity, duration: 3 }}
+              className="absolute -top-6 -right-6 px-5 py-3 rounded-2xl bg-cyan-500 text-black font-bold shadow-xl"
+            >
+              UI/UX Design
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ repeat: Infinity, duration: 4 }}
+              className="absolute bottom-10 -left-10 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10"
+            >
+              <p className="text-sm text-gray-300">Modern Development</p>
+              <h4 className="font-bold text-lg">React • Next.js</h4>
+            </motion.div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
