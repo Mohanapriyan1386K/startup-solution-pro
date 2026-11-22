@@ -8,8 +8,8 @@ import WorldGlobe from "./WorldGlobe";
 import "./Portfolio.css";
 
 const Portfolio = () => {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(carouselRef);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(gridRef);
   const reduceMotion = useReducedMotion();
   const { paused: backgroundPaused, pageVisible } = useBackgroundMotion();
   const [paused, setPaused] = useState(false);
@@ -71,91 +71,84 @@ const Portfolio = () => {
             {paused ? "Resume" : "Pause"}
           </button>
         </div>
-      </div>
 
-      <div
-        ref={carouselRef}
-        role="region"
-        aria-label="Featured projects"
-        className="portfolio-carousel relative z-10"
-        data-playing={playing}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        onFocusCapture={() => setFocused(true)}
-        onBlurCapture={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-            setFocused(false);
-          }
-        }}
-      >
-        <div className="portfolio-track">
-          {[0, 1].map((copy) => (
-            <div className="portfolio-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
-              {projects.map((project) => {
-                const screenshots = project.samples.length
-                  ? project.samples
-                  : [{ id: project.id, title: project.title, image: project.image }];
-                const activeIndex = slide % screenshots.length;
+        <div
+          ref={gridRef}
+          role="region"
+          aria-label="Featured projects"
+          className="portfolio-grid max-w-7xl mx-auto"
+          data-playing={playing}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          onFocusCapture={() => setFocused(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              setFocused(false);
+            }
+          }}
+        >
+          {projects.map((project) => {
+            const screenshots = project.samples.length
+              ? project.samples
+              : [{ id: project.id, title: project.title, image: project.image }];
+            const activeIndex = slide % screenshots.length;
 
-                return (
-                  <Link
-                    key={project.id}
-                    to={`/project/${project.id}`}
-                    tabIndex={copy === 1 ? -1 : undefined}
-                    aria-label={`View ${project.title} project`}
-                    className="portfolio-card group relative flex flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-2xl hover:border-cyan-400/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 transition-colors duration-300"
-                  >
-                    <div className="relative aspect-[2.08/1] shrink-0 overflow-hidden bg-[#0b1120] border-b border-white/10">
+            return (
+              <Link
+                key={project.id}
+                to={`/project/${project.id}`}
+                aria-label={`View ${project.title} project`}
+                className="portfolio-card group relative flex flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-2xl hover:border-cyan-400/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 transition-colors duration-300"
+              >
+                <div className="relative aspect-[2.08/1] shrink-0 overflow-hidden bg-[#0b1120] border-b border-white/10">
+                  {screenshots.map((screenshot, index) => (
+                    <img
+                      key={screenshot.id}
+                      src={screenshot.image}
+                      alt={`${project.title} - ${screenshot.title}`}
+                      aria-hidden={index !== activeIndex}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      width={1900}
+                      height={914}
+                      className={`portfolio-screenshot absolute inset-0 w-full h-full object-contain ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+                    />
+                  ))}
+                </div>
+
+                <div className="p-4 sm:p-6 flex-1">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3 sm:mb-4">
+                    <span className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${project.color} shadow-lg`}>
+                      {project.category}
+                    </span>
+                    <div className="flex items-center gap-1.5" aria-hidden="true">
                       {screenshots.map((screenshot, index) => (
-                        <img
+                        <span
                           key={screenshot.id}
-                          src={screenshot.image}
-                          alt={`${project.title} - ${screenshot.title}`}
-                          aria-hidden={index !== activeIndex}
-                          loading={copy === 0 && index === 0 ? "eager" : "lazy"}
-                          width={1900}
-                          height={914}
-                          className={`portfolio-screenshot absolute inset-0 w-full h-full object-contain ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+                          className={`h-1.5 rounded-full transition-all duration-500 ${index === activeIndex ? "w-5 bg-cyan-400" : "w-1.5 bg-white/20"}`}
                         />
                       ))}
                     </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Sparkles size={16} className="text-cyan-400" />
+                    <span className="text-cyan-400 text-sm font-medium">Premium Project</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{project.title}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                    {project.description}
+                  </p>
+                </div>
 
-                    <div className="p-4 sm:p-6 flex-1">
-                      <div className="flex flex-wrap items-center justify-between gap-3 mb-3 sm:mb-4">
-                        <span className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${project.color} shadow-lg`}>
-                          {project.category}
-                        </span>
-                        <div className="flex items-center gap-1.5" aria-hidden="true">
-                          {screenshots.map((screenshot, index) => (
-                            <span
-                              key={screenshot.id}
-                              className={`h-1.5 rounded-full transition-all duration-500 ${index === activeIndex ? "w-5 bg-cyan-400" : "w-1.5 bg-white/20"}`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Sparkles size={16} className="text-cyan-400" />
-                        <span className="text-cyan-400 text-sm font-medium">Premium Project</span>
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{project.title}</h3>
-                      <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 min-h-[2.5rem]">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 px-4 py-3 sm:px-6 sm:py-5 border-t border-white/10">
-                      <span className="text-xs sm:text-sm text-gray-400">Modern UI / UX Design</span>
-                      <span className="flex items-center gap-2 text-cyan-400 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
-                        View Project
-                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          ))}
+                <div className="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 px-4 py-3 sm:px-6 sm:py-5 border-t border-white/10">
+                  <span className="text-xs sm:text-sm text-gray-400">Modern UI / UX Design</span>
+                  <span className="flex items-center gap-2 text-cyan-400 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
+                    View Project
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

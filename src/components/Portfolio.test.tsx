@@ -54,7 +54,8 @@ describe("portfolio slideshow", () => {
     for (const project of projects) {
       expect(activeImage(project.title)).toHaveAttribute("src", project.samples[3 % project.samples.length].image);
     }
-    expect(screen.getAllByRole("link")).toHaveLength(projects.length);
+    expect(within(screen.getByRole("region", { name: "Featured projects" }))
+      .getAllByRole("link", { hidden: true })).toHaveLength(projects.length);
   });
 
   it("pauses on hover and with the pause control, then resumes", () => {
