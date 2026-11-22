@@ -4,6 +4,7 @@ import { ArrowRight, Pause, Play, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
 import { useBackgroundMotion } from "./BackgroundMotion";
+import WorldGlobe from "./WorldGlobe";
 import "./Portfolio.css";
 
 const Portfolio = () => {
@@ -33,28 +34,7 @@ const Portfolio = () => {
       className="portfolio-section relative py-24 overflow-hidden bg-[#050816]"
       data-animated={playing}
     >
-      <div className="portfolio-scene" aria-hidden="true">
-        <div className="portfolio-scene-glow portfolio-scene-glow--cyan" />
-        <div className="portfolio-scene-glow portfolio-scene-glow--blue" />
-        <div className="portfolio-scene-grid" />
-        <div className="portfolio-scene-floor" />
-        {["left", "right"].map((position) => (
-          <div key={position} className={`portfolio-cube-anchor portfolio-cube-anchor--${position}`}>
-            <div className="portfolio-cube">
-              {["front", "back", "left", "right", "top", "bottom"].map((face) => (
-                <span key={face} className={`portfolio-cube-face portfolio-cube-face--${face}`} />
-              ))}
-            </div>
-          </div>
-        ))}
-        <div className="portfolio-orbit-anchor">
-          <div className="portfolio-orbit"><span /></div>
-          <div className="portfolio-orbit portfolio-orbit--inner"><span /></div>
-        </div>
-        <div className="portfolio-scene-particles">
-          {Array.from({ length: 6 }, (_, index) => <span key={index} />)}
-        </div>
-      </div>
+      <WorldGlobe paused={paused} />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
