@@ -1,0 +1,57 @@
+.mobile-preview-window {
+  overflow: hidden;
+}
+
+.mobile-preview-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: mobile-preview-scroll 32s linear infinite;
+  animation-play-state: paused;
+}
+
+.mobile-preview-window[data-playing="true"] .mobile-preview-track {
+  animation-play-state: running;
+}
+
+.mobile-preview-window:hover .mobile-preview-track,
+.mobile-preview-window:focus-within .mobile-preview-track {
+  animation-play-state: paused;
+}
+
+.mobile-preview-group {
+  display: flex;
+  flex-shrink: 0;
+  height: 100%;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.mobile-preview-screen {
+  flex-shrink: 0;
+  height: 100%;
+  aspect-ratio: 0.54;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 1.5rem;
+  background: #262626;
+}
+
+@keyframes mobile-preview-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-preview-window {
+    overflow-x: auto;
+  }
+
+  .mobile-preview-track {
+    animation: none;
+  }
+
+  .mobile-preview-group[aria-hidden="true"] {
+    display: none;
+  }
+}

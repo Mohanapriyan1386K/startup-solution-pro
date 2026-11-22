@@ -44,6 +44,7 @@ const Index = () => (
       <link rel="canonical" href={siteUrl} />
     </Helmet>
     <Navbar />
+    <Portfolio />
     <Hero />
     <TechnologiesSection/>
     <TrustedBy />
@@ -51,7 +52,6 @@ const Index = () => (
     <About />
     {/* <Services /> */}
     {/* <Pricing /> */}
-    <Portfolio />
     <Testimonials />
     <WhyChooseUs />
     <Contact />

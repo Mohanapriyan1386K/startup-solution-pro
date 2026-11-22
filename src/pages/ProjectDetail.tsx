@@ -58,7 +58,7 @@ const ProjectDetail = () => {
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain bg-muted/30"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="absolute inset-0 flex items-end">
@@ -121,7 +121,7 @@ const ProjectDetail = () => {
                     loading="lazy"
                     width={800}
                     height={600}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain bg-muted/30"
                   />
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-all duration-300 flex items-center justify-center">
                     <div className="bg-background/90 backdrop-blur-sm text-foreground px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2">
@@ -171,13 +171,12 @@ const ProjectDetail = () => {
               className="bg-background rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-border"
             >
               {/* Modal Header Image */}
-              <div className="relative h-56 md:h-72 overflow-hidden rounded-t-3xl">
+              <div className="relative aspect-[2.08/1] overflow-hidden rounded-t-3xl">
                 <img
                   src={selectedSample.image}
                   alt={selectedSample.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain bg-muted/30"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
                 <button
                   onClick={() => setSelectedSample(null)}
                   className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-background transition-colors"
@@ -187,7 +186,7 @@ const ProjectDetail = () => {
               </div>
 
               {/* Modal Content */}
-              <div className="p-6 md:p-8 -mt-10 relative">
+              <div className="p-6 md:p-8 relative">
                 <div className="flex flex-wrap gap-2 mb-3">
                   {selectedSample.tags.map((tag) => (
                     <span
@@ -207,15 +206,17 @@ const ProjectDetail = () => {
 
                 {/* Info Cards */}
                 <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                  <div className="flex items-center gap-3 p-4 rounded-xl bg-muted/50 border border-border">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <Clock size={18} className="text-primary" />
+                  {selectedSample.details.duration && (
+                    <div className="flex items-center gap-3 p-4 rounded-xl bg-muted/50 border border-border">
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        <Clock size={18} className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-muted-foreground">Duration</p>
+                        <p className="font-semibold text-foreground text-sm">{selectedSample.details.duration}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Duration</p>
-                      <p className="font-semibold text-foreground text-sm">{selectedSample.details.duration}</p>
-                    </div>
-                  </div>
+                  )}
                   <div className="flex items-center gap-3 p-4 rounded-xl bg-muted/50 border border-border">
                     <div className="p-2 rounded-lg bg-secondary/10">
                       <User size={18} className="text-secondary" />
@@ -244,22 +245,24 @@ const ProjectDetail = () => {
                 </div>
 
                 {/* Tech Stack */}
-                <div>
-                  <h3 className="font-heading font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Code2 size={16} className="text-secondary" />
-                    Tech Stack
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedSample.details.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1.5 rounded-lg bg-card border border-border text-sm font-medium text-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                {!!selectedSample.details.techStack?.length && (
+                  <div>
+                    <h3 className="font-heading font-bold text-foreground mb-3 flex items-center gap-2">
+                      <Code2 size={16} className="text-secondary" />
+                      Tech Stack
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedSample.details.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 rounded-lg bg-card border border-border text-sm font-medium text-foreground"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </motion.div>
           </motion.div>

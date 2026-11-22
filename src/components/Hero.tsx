@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import MobilePortfolioPreview from "@/components/MobilePortfolioPreview";
 import {
   ArrowRight,
   Play,
@@ -20,7 +21,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:70px_70px]" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10 min-h-screen flex items-center">
+      <div className="container mx-auto px-6 lg:px-12 py-20 lg:py-12 relative z-10 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-14 items-center w-full">
           {/* LEFT CONTENT */}
           <motion.div
@@ -127,48 +128,15 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1 }}
-            className="relative hidden lg:flex justify-center"
+            className="relative flex min-w-0 justify-center mt-6 lg:mt-0"
           >
-            {/* Floating Card */}
-            <div className="relative w-[500px] h-[500px] rounded-[40px] bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-2xl overflow-hidden shadow-2xl">
-              {/* Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/20 blur-3xl rounded-full" />
-
-              {/* Mock UI */}
-              <div className="p-8">
-                <div className="flex items-center gap-2 mb-8">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
-                </div>
-
-                <div className="space-y-5">
-                  <div className="h-14 rounded-xl bg-white/10" />
-                  <div className="grid grid-cols-2 gap-5">
-                    <div className="h-40 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-blue-500/20 border border-white/10" />
-                    <div className="space-y-5">
-                      <div className="h-16 rounded-xl bg-white/10" />
-                      <div className="h-16 rounded-xl bg-white/10" />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-4 mt-6">
-                    {[1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className="h-24 rounded-xl bg-white/10"
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <MobilePortfolioPreview />
 
             {/* Floating Elements */}
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ repeat: Infinity, duration: 3 }}
-              className="absolute -top-6 -right-6 px-5 py-3 rounded-2xl bg-cyan-500 text-black font-bold shadow-xl"
+              className="absolute -top-6 right-0 lg:-right-6 px-5 py-3 rounded-2xl bg-cyan-500 text-black font-bold shadow-xl"
             >
               UI/UX Design
             </motion.div>
@@ -176,7 +144,7 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ repeat: Infinity, duration: 4 }}
-              className="absolute bottom-10 -left-10 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10"
+              className="pointer-events-none absolute -bottom-5 left-0 lg:-left-10 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10"
             >
               <p className="text-sm text-gray-300">Modern Development</p>
               <h4 className="font-bold text-lg">React • Next.js</h4>

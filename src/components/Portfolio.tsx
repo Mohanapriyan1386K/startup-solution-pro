@@ -1,139 +1,158 @@
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ExternalLink,
-  Sparkles,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { ArrowRight, Pause, Play, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import "./Portfolio.css";
 
 const Portfolio = () => {
-  const navigate = useNavigate();
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(carouselRef);
+  const reduceMotion = useReducedMotion();
+  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [slide, setSlide] = useState(0);
+  const playing = isInView && !paused && !hovered && !focused && !reduceMotion;
+
+  useEffect(() => {
+    if (!playing) return;
+
+    const interval = window.setInterval(() => {
+      if (!document.hidden) setSlide((current) => current + 1);
+    }, 4000);
+
+    return () => window.clearInterval(interval);
+  }, [playing]);
 
   return (
     <section
       id="portfolio"
       className="relative py-24 overflow-hidden bg-[#050816]"
     >
-      {/* Background Effects */}
       <div className="absolute top-[-120px] left-[-100px] w-[320px] h-[320px] bg-cyan-500/20 blur-3xl rounded-full" />
       <div className="absolute bottom-[-120px] right-[-100px] w-[320px] h-[320px] bg-purple-500/20 blur-3xl rounded-full" />
-
-      {/* Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:70px_70px]" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="uppercase tracking-[6px] text-cyan-400 text-sm font-semibold mb-4">
             Portfolio
           </p>
-
           <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
             Featured Digital
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mt-2">
               Projects & Solutions
             </span>
           </h2>
-
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mt-6">
             Explore our recent projects crafted with modern UI/UX, scalable
             architecture, and business-focused digital experiences.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((p, i) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.08 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              onClick={() => navigate(`/project/${p.id}`)}
-              className="group relative cursor-pointer"
-            >
-              {/* Card */}
-              <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-2xl">
-                {/* Image */}
-                <div className="relative h-[280px] overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    loading="lazy"
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+        <div className="flex justify-end max-w-7xl mx-auto mb-4">
+          <button
+            type="button"
+            onClick={() => setPaused((current) => !current)}
+            aria-label={paused ? "Resume portfolio animation" : "Pause portfolio animation"}
+            aria-pressed={paused}
+            className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 motion-reduce:hidden"
+          >
+            {paused ? <Play size={14} /> : <Pause size={14} />}
+            {paused ? "Resume" : "Pause"}
+          </button>
+        </div>
+      </div>
 
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/20 to-transparent opacity-90" />
+      <div
+        ref={carouselRef}
+        role="region"
+        aria-label="Featured projects"
+        className="portfolio-carousel relative z-10"
+        data-playing={playing}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onFocusCapture={() => setFocused(true)}
+        onBlurCapture={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+            setFocused(false);
+          }
+        }}
+      >
+        <div className="portfolio-track">
+          {[0, 1].map((copy) => (
+            <div className="portfolio-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
+              {projects.map((project) => {
+                const screenshots = project.samples.length
+                  ? project.samples
+                  : [{ id: project.id, title: project.title, image: project.image }];
+                const activeIndex = slide % screenshots.length;
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-all duration-500" />
-
-                  {/* Category Badge */}
-                  <div
-                    className={`absolute top-5 left-5 px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${p.color} shadow-lg`}
+                return (
+                  <Link
+                    key={project.id}
+                    to={`/project/${project.id}`}
+                    tabIndex={copy === 1 ? -1 : undefined}
+                    aria-label={`View ${project.title} project`}
+                    className="portfolio-card group relative flex flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-2xl hover:border-cyan-400/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 transition-colors duration-300"
                   >
-                    {p.category}
-                  </div>
-
-                  {/* Floating Icon */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    className="absolute top-5 right-5 w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white"
-                  >
-                    <ExternalLink size={18} />
-                  </motion.div>
-
-                  {/* Bottom Content */}
-                  <div className="absolute bottom-0 left-0 w-full p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Sparkles size={16} className="text-cyan-400" />
-                      <span className="text-cyan-400 text-sm font-medium">
-                        Premium Project
-                      </span>
+                    <div className="relative aspect-[2.08/1] shrink-0 overflow-hidden bg-[#0b1120] border-b border-white/10">
+                      {screenshots.map((screenshot, index) => (
+                        <img
+                          key={screenshot.id}
+                          src={screenshot.image}
+                          alt={`${project.title} - ${screenshot.title}`}
+                          aria-hidden={index !== activeIndex}
+                          loading={copy === 0 && index === 0 ? "eager" : "lazy"}
+                          width={1900}
+                          height={914}
+                          className={`portfolio-screenshot absolute inset-0 w-full h-full object-contain ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+                        />
+                      ))}
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-3">
-                      {p.title}
-                    </h3>
+                    <div className="p-6 flex-1">
+                      <div className="flex items-center justify-between gap-3 mb-4">
+                        <span className={`inline-block px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${project.color} shadow-lg`}>
+                          {project.category}
+                        </span>
+                        <div className="flex items-center gap-1.5" aria-hidden="true">
+                          {screenshots.map((screenshot, index) => (
+                            <span
+                              key={screenshot.id}
+                              className={`h-1.5 rounded-full transition-all duration-500 ${index === activeIndex ? "w-5 bg-cyan-400" : "w-1.5 bg-white/20"}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Sparkles size={16} className="text-cyan-400" />
+                        <span className="text-cyan-400 text-sm font-medium">Premium Project</span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
+                      <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                        {project.description}
+                      </p>
+                    </div>
 
-                    <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
-                      {p.description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <div className="flex items-center justify-between px-6 py-5 border-t border-white/10">
-                  <span className="text-sm text-gray-400">
-                    Modern UI / UX Design
-                  </span>
-
-                  <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
-                    View Project
-                    <ArrowRight
-                      size={16}
-                      className="group-hover:translate-x-1 transition-transform duration-300"
-                    />
-                  </div>
-                </div>
-
-                {/* Glow Border */}
-                <div className="absolute inset-0 rounded-[28px] border border-transparent group-hover:border-cyan-400/30 transition-all duration-300" />
-              </div>
-            </motion.div>
+                    <div className="flex items-center justify-between gap-3 px-6 py-5 border-t border-white/10">
+                      <span className="text-sm text-gray-400">Modern UI / UX Design</span>
+                      <span className="flex items-center gap-2 text-cyan-400 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
+                        View Project
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           ))}
         </div>
       </div>
