@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
+import TechBackground from "./TechBackground";
 import {
   Send,
   Mail,
@@ -91,13 +92,7 @@ const Contact = () => {
       id="contact"
       className="relative py-24 overflow-hidden bg-[#050816]"
     >
-      {/* Background Glow */}
-      <div className="absolute top-[-100px] left-[-100px] w-[320px] h-[320px] bg-cyan-500/20 blur-3xl rounded-full" />
-
-      <div className="absolute bottom-[-120px] right-[-100px] w-[320px] h-[320px] bg-purple-500/20 blur-3xl rounded-full" />
-
-      {/* Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:70px_70px]" />
+      <TechBackground variant="signal" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Heading */}

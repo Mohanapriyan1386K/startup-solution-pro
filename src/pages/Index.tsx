@@ -12,10 +12,12 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import TechnologiesSection from "@/components/TechnologiesSection";
+import { BackgroundMotionProvider } from "@/components/BackgroundMotion";
 
 const siteUrl = "https://maventechnology.in";
 
 const Index = () => (
+  <BackgroundMotionProvider>
   <div className="min-h-screen bg-background">
     <Helmet>
       <title>Maven Technology | Modern Websites for Growing Businesses</title>
@@ -57,6 +59,7 @@ const Index = () => (
     <Contact />
     <Footer />
   </div>
+  </BackgroundMotionProvider>
 );
 
 export default Index;

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import TechBackground from "./TechBackground";
 
 const businessServices = [
   "Corporate Websites",
@@ -14,9 +15,7 @@ const businessServices = [
 const TrustedBy = () => {
   return (
     <section className="relative py-20 overflow-hidden bg-[#050816]">
-      {/* Background Glow */}
-      <div className="absolute top-0 left-[-120px] w-[300px] h-[300px] bg-cyan-500/20 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-[-120px] w-[300px] h-[300px] bg-purple-500/20 blur-3xl rounded-full" />
+      <TechBackground variant="cloud" />
 
       {/* Heading */}
       <div className="container mx-auto px-6 text-center relative z-10 mb-12">

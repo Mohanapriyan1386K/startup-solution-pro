@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import MobilePortfolioPreview from "@/components/MobilePortfolioPreview";
+import TechBackground from "./TechBackground";
 import {
   ArrowRight,
   Play,
@@ -12,14 +13,7 @@ import {
 const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
-      {/* Background Glow */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-[-120px] left-[-100px] w-[400px] h-[400px] bg-blue-600/30 blur-3xl rounded-full" />
-        <div className="absolute bottom-[-120px] right-[-100px] w-[400px] h-[400px] bg-purple-600/20 blur-3xl rounded-full" />
-
-        {/* Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:70px_70px]" />
-      </div>
+      <TechBackground variant="code" />
 
       <div className="container mx-auto px-6 lg:px-12 py-20 lg:py-12 relative z-10 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-14 items-center w-full">

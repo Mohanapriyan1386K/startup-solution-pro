@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import TechBackground from "./TechBackground";
 import { Layout, Palette, Code2, Mail, Sparkles, Rocket } from "lucide-react";
 
 const services = [
@@ -11,8 +12,9 @@ const services = [
 ];
 
 const Services = () => (
-  <section id="services" className="py-24 relative">
-    <div className="container px-6 mx-auto">
+  <section id="services" className="py-24 relative overflow-hidden">
+    <TechBackground variant="workflow" />
+    <div className="container px-6 mx-auto relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

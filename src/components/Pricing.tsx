@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import TechBackground from "./TechBackground";
 import { Check, Star } from "lucide-react";
 
 const plans = [
@@ -48,8 +49,9 @@ const plans = [
 ];
 
 const Pricing = () => (
-  <section id="pricing" className="py-24 relative">
-    <div className="container px-6 mx-auto">
+  <section id="pricing" className="py-24 relative overflow-hidden">
+    <TechBackground variant="stack" />
+    <div className="container px-6 mx-auto relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

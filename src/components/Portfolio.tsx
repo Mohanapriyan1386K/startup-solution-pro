@@ -3,17 +3,19 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowRight, Pause, Play, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import { useBackgroundMotion } from "./BackgroundMotion";
 import "./Portfolio.css";
 
 const Portfolio = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(carouselRef);
   const reduceMotion = useReducedMotion();
+  const { paused: backgroundPaused, pageVisible } = useBackgroundMotion();
   const [paused, setPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [slide, setSlide] = useState(0);
-  const playing = isInView && !paused && !hovered && !focused && !reduceMotion;
+  const playing = isInView && pageVisible && !backgroundPaused && !paused && !hovered && !focused && !reduceMotion;
 
   useEffect(() => {
     if (!playing) return;
@@ -28,11 +30,31 @@ const Portfolio = () => {
   return (
     <section
       id="portfolio"
-      className="relative py-24 overflow-hidden bg-[#050816]"
+      className="portfolio-section relative py-24 overflow-hidden bg-[#050816]"
+      data-animated={playing}
     >
-      <div className="absolute top-[-120px] left-[-100px] w-[320px] h-[320px] bg-cyan-500/20 blur-3xl rounded-full" />
-      <div className="absolute bottom-[-120px] right-[-100px] w-[320px] h-[320px] bg-purple-500/20 blur-3xl rounded-full" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:70px_70px]" />
+      <div className="portfolio-scene" aria-hidden="true">
+        <div className="portfolio-scene-glow portfolio-scene-glow--cyan" />
+        <div className="portfolio-scene-glow portfolio-scene-glow--blue" />
+        <div className="portfolio-scene-grid" />
+        <div className="portfolio-scene-floor" />
+        {["left", "right"].map((position) => (
+          <div key={position} className={`portfolio-cube-anchor portfolio-cube-anchor--${position}`}>
+            <div className="portfolio-cube">
+              {["front", "back", "left", "right", "top", "bottom"].map((face) => (
+                <span key={face} className={`portfolio-cube-face portfolio-cube-face--${face}`} />
+              ))}
+            </div>
+          </div>
+        ))}
+        <div className="portfolio-orbit-anchor">
+          <div className="portfolio-orbit"><span /></div>
+          <div className="portfolio-orbit portfolio-orbit--inner"><span /></div>
+        </div>
+        <div className="portfolio-scene-particles">
+          {Array.from({ length: 6 }, (_, index) => <span key={index} />)}
+        </div>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div

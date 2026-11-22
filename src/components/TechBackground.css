@@ -1,0 +1,119 @@
+.tech-background {
+  --tech-primary: #22d3ee;
+  --tech-secondary: #818cf8;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: paint;
+}
+
+.tech-background__ambient {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(ellipse at 5% 25%, color-mix(in srgb, var(--tech-primary) 10%, transparent), transparent 45%),
+    radial-gradient(ellipse at 95% 80%, color-mix(in srgb, var(--tech-secondary) 9%, transparent), transparent 45%);
+  animation: tech-ambient 22s ease-in-out infinite alternate;
+}
+
+.tech-background__art {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 900px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+.tech-background__shade {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 20%, #050816 8%, rgb(5 8 22 / 0.4) 45%, transparent 80%);
+}
+
+.tech-background--code { --tech-secondary: #a78bfa; }
+.tech-background--circuit { --tech-primary: #34d399; --tech-secondary: #22d3ee; }
+.tech-background--cloud { --tech-primary: #60a5fa; --tech-secondary: #a78bfa; }
+.tech-background--analytics { --tech-primary: #2dd4bf; --tech-secondary: #38bdf8; }
+.tech-background--network { --tech-primary: #818cf8; --tech-secondary: #22d3ee; }
+.tech-background--communication { --tech-primary: #a78bfa; --tech-secondary: #f472b6; }
+.tech-background--security { --tech-primary: #22d3ee; --tech-secondary: #34d399; }
+.tech-background--signal { --tech-primary: #38bdf8; --tech-secondary: #818cf8; }
+.tech-background--horizon { --tech-primary: #6366f1; --tech-secondary: #22d3ee; }
+.tech-background--workflow { --tech-primary: #38bdf8; --tech-secondary: #a78bfa; }
+.tech-background--stack { --tech-primary: #a78bfa; --tech-secondary: #38bdf8; }
+
+.tech-background--analytics .tech-background__art { top: 66%; }
+.tech-background--horizon .tech-background__art { top: 66%; opacity: 0.24; }
+.tech-background--horizon .tech-background__shade { background: linear-gradient(#050816, transparent 85%); }
+.tech-background--workflow .tech-background__shade,
+.tech-background--stack .tech-background__shade {
+  background: radial-gradient(ellipse at 50% 20%, hsl(var(--background)) 8%, transparent 75%);
+}
+
+.tech-faint { opacity: 0.3; }
+.tech-accent { stroke: var(--tech-primary); stroke-width: 2; }
+.tech-float { animation: tech-float 14s ease-in-out infinite; }
+.tech-flow { stroke-dasharray: 10 130; animation: tech-data-flow 14s linear infinite; }
+.tech-node { fill: var(--tech-primary); stroke: none; animation: tech-node-glow 6s ease-in-out infinite; }
+.tech-bar { fill: color-mix(in srgb, var(--tech-primary) 12%, transparent); transform-box: fill-box; transform-origin: center bottom; animation: tech-bar-rise 8s ease-in-out infinite; }
+.tech-wave { transform-origin: center; transform-box: fill-box; animation: tech-wave 10s ease-in-out infinite; }
+.tech-spin { transform-origin: center; transform-box: fill-box; animation: tech-spin 65s linear infinite; }
+.tech-ring { transform-origin: center; transform-box: fill-box; animation: tech-signal 8s ease-out infinite; }
+.tech-terrain { animation: tech-terrain 18s ease-in-out infinite alternate; }
+.tech-delay { animation-delay: -7s; }
+.tech-delay-0 { animation-delay: -1s; }
+.tech-delay-1 { animation-delay: -3s; }
+.tech-delay-2 { animation-delay: -5s; }
+
+.tech-background *,
+.tech-background svg * { animation-play-state: paused; }
+.tech-background[data-running="true"] *,
+.tech-background[data-running="true"] svg * { animation-play-state: running; }
+
+.background-motion-control {
+  position: fixed;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  left: 1rem;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgb(148 163 184 / 0.25);
+  border-radius: 999px;
+  background: rgb(5 8 22 / 0.92);
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0.15);
+}
+.background-motion-control:hover { color: #67e8f9; border-color: rgb(34 211 238 / 0.5); }
+.background-motion-control:focus-visible { outline: 2px solid #22d3ee; outline-offset: 4px; }
+
+@keyframes tech-ambient { to { transform: translate3d(3%, -3%, 0); } }
+@keyframes tech-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+@keyframes tech-data-flow { to { stroke-dashoffset: -560; } }
+@keyframes tech-node-glow { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes tech-bar-rise { 0%, 100% { transform: scaleY(0.65); } 50% { transform: scaleY(1); } }
+@keyframes tech-wave { 0%, 100% { transform: scaleY(0.65); } 50% { transform: scaleY(1.15); } }
+@keyframes tech-spin { to { transform: rotate(360deg); } }
+@keyframes tech-signal { 0% { transform: scale(0.85); opacity: 0.15; } 50% { opacity: 0.8; } 100% { transform: scale(1.12); opacity: 0.1; } }
+@keyframes tech-terrain { to { transform: translateY(-16px); } }
+
+@media (max-width: 639px) {
+  .tech-background__art { width: 740px; opacity: 0.19; }
+  .tech-background__ambient { inset: 0; animation: none; }
+  .tech-background--code .tech-background__art,
+  .tech-background--network .tech-background__art { left: 38%; }
+  .tech-background--security .tech-background__art,
+  .tech-background--circuit .tech-background__art { left: 35%; }
+  .background-motion-control { left: 0.75rem; padding-inline: 0.7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-background *, .tech-background svg * { animation: none; }
+  .background-motion-control { display: none; }
+}

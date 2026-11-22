@@ -1,3 +1,4 @@
+import TechBackground from "./TechBackground";
 import {
   ArrowUpRight,
   Mail,
@@ -33,13 +34,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-[#050816] border-t border-white/10">
-      {/* Background Glow */}
-      <div className="absolute top-[-120px] left-[-100px] w-[320px] h-[320px] bg-cyan-500/10 blur-3xl rounded-full" />
-
-      <div className="absolute bottom-[-120px] right-[-100px] w-[320px] h-[320px] bg-purple-500/10 blur-3xl rounded-full" />
-
-      {/* Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:70px_70px]" />
+      <TechBackground variant="horizon" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Top Footer */}

@@ -1,0 +1,71 @@
+{
+  "mode": "Built-in image_gen",
+  "promptTemplate": "Use case: logo-brand. Asset type: one isolated technology logo image for an existing dark navy website card. Subject: {subject}. Render a faithful, clean, immediately recognizable {name} logo symbol in its standard brand colors, centered with generous transparent padding. Crisp flat logo artwork, no bevels, no photorealism, no shadows, no scene. Transparent background. Single emblem only, no extra captions, names, labels, borders, UI, watermark or surrounding text (retain only letters integral to the described emblem). Square composition; emblem occupies about 70 percent of the canvas. Keep edges sharp and high contrast on dark navy.",
+  "assets": [
+    {
+      "file": "angular.png",
+      "name": "Angular",
+      "subject": "red Angular shield with a white angular A emblem"
+    },
+    {
+      "file": "react.png",
+      "name": "React",
+      "subject": "cyan React atom with three intersecting elliptical orbits and a central dot"
+    },
+    {
+      "file": "aws.png",
+      "name": "AWS",
+      "subject": "the AWS cloud brand mark: lowercase white aws letters above an orange smile arrow"
+    },
+    {
+      "file": "bootstrap.png",
+      "name": "Bootstrap",
+      "subject": "purple Bootstrap badge containing the white B emblem"
+    },
+    {
+      "file": "mongodb.png",
+      "name": "MongoDB",
+      "subject": "the green MongoDB leaf emblem with a subtle central stem"
+    },
+    {
+      "file": "html5.png",
+      "name": "HTML5",
+      "subject": "orange HTML5 shield with the white stylized 5 emblem"
+    },
+    {
+      "file": "javascript.png",
+      "name": "JavaScript",
+      "subject": "yellow JavaScript square with the dark JS monogram"
+    },
+    {
+      "file": "nodejs.png",
+      "name": "Node.js",
+      "subject": "green Node.js hexagonal emblem containing the JS monogram"
+    },
+    {
+      "file": "oracle.png",
+      "name": "Oracle",
+      "subject": "the red Oracle oval ring emblem, wide horizontal hollow rounded oval"
+    },
+    {
+      "file": "postgresql.png",
+      "name": "PostgreSQL",
+      "subject": "the blue PostgreSQL elephant head emblem with white outlines"
+    },
+    {
+      "file": "python.png",
+      "name": "Python",
+      "subject": "the Python emblem of two interlocking blue and yellow snakes"
+    },
+    {
+      "file": "mysql.png",
+      "name": "MySQL",
+      "subject": "the blue MySQL dolphin emblem"
+    },
+    {
+      "file": "postman.png",
+      "name": "Postman",
+      "subject": "the orange Postman circle emblem containing the white astronaut tool symbol"
+    }
+  ]
+}
