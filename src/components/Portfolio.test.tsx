@@ -37,6 +37,35 @@ afterEach(() => {
 });
 
 describe("portfolio slideshow", () => {
+  it("shows the carousel and grid together with independent pause controls", () => {
+    const { container } = render(
+      <MemoryRouter>
+        <Portfolio layout="carousel" />
+        <Portfolio id="portfolio-grid" />
+      </MemoryRouter>,
+    );
+    const carousel = screen.getByRole("region", { name: "Featured projects carousel" });
+    const grid = screen.getByRole("region", { name: "Featured projects" });
+    expect(within(carousel).getAllByRole("link")).toHaveLength(projects.length);
+    expect(within(grid).getAllByRole("link", { hidden: true })).toHaveLength(projects.length);
+    expect(carousel.querySelectorAll('[aria-hidden="true"] a')).toHaveLength(projects.length);
+    for (const link of carousel.querySelectorAll('[aria-hidden="true"] a')) {
+      expect(link).toHaveAttribute("tabindex", "-1");
+    }
+    const ids = Array.from(container.querySelectorAll("[id]"), (element) => element.id);
+    expect(new Set(ids).size).toBe(ids.length);
+
+    fireEvent.click(screen.getByRole("button", { name: "Pause featured portfolio animation" }));
+    act(() => { vi.advanceTimersByTime(4000); });
+    const projectLink = { name: `View ${projects[0].title} project` };
+    expect(within(within(carousel).getByRole("link", projectLink)).getByRole("img"))
+      .toHaveAttribute("src", projects[0].samples[0].image);
+    expect(within(within(grid).getByRole("link", projectLink)).getByRole("img"))
+      .toHaveAttribute("src", projects[0].samples[1].image);
+    expect(carousel).toHaveAttribute("data-playing", "false");
+    expect(grid).toHaveAttribute("data-playing", "true");
+  });
+
   it("cycles each project's supplied screenshots and wraps independently", () => {
     renderPortfolio();
     for (const project of projects) {

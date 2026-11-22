@@ -46,7 +46,7 @@ const Index = () => (
       <link rel="canonical" href={siteUrl} />
     </Helmet>
     <Navbar />
-    <Portfolio />
+    <Portfolio layout="carousel" />
     <Hero />
     <TechnologiesSection/>
     <TrustedBy />
@@ -54,6 +54,7 @@ const Index = () => (
     <About />
     {/* <Services /> */}
     {/* <Pricing /> */}
+    <Portfolio id="portfolio-grid" />
     <Testimonials />
     <WhyChooseUs />
     <Contact />

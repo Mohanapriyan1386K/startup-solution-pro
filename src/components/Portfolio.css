@@ -2,6 +2,44 @@
   isolation: isolate;
 }
 
+.portfolio-carousel {
+  --portfolio-card-width: clamp(20rem, 31vw, 32rem);
+  overflow: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(34 211 238 / 0.35) transparent;
+}
+
+.portfolio-track {
+  display: flex;
+  width: max-content;
+  animation: portfolio-scroll 36s linear infinite;
+  animation-play-state: paused;
+}
+
+.portfolio-carousel[data-playing="true"] .portfolio-track {
+  animation-play-state: running;
+}
+
+.portfolio-carousel:hover .portfolio-track,
+.portfolio-carousel:focus-within .portfolio-track {
+  animation-play-state: paused;
+}
+
+.portfolio-group {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100vw;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.portfolio-carousel .portfolio-card {
+  flex: 0 0 var(--portfolio-card-width);
+  width: var(--portfolio-card-width);
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -14,6 +52,11 @@
 
 .portfolio-screenshot {
   transition: opacity 800ms ease-in-out;
+}
+
+@keyframes portfolio-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @media (min-width: 640px) {
@@ -30,12 +73,33 @@
 }
 
 @media (max-width: 639px) {
+  .portfolio-carousel {
+    --portfolio-card-width: min(82vw, 20rem);
+  }
+
+  .portfolio-group {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+
   .portfolio-card {
     border-radius: 1.25rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .portfolio-carousel {
+    overflow-x: auto;
+  }
+
+  .portfolio-track {
+    animation: none;
+  }
+
+  .portfolio-group[aria-hidden="true"] {
+    display: none;
+  }
+
   .portfolio-screenshot {
     transition: none;
   }
