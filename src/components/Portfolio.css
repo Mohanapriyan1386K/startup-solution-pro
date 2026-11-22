@@ -47,7 +47,16 @@
 
 @media (max-width: 639px) {
   .portfolio-carousel {
-    --portfolio-card-width: 88vw;
+    --portfolio-card-width: min(82vw, 20rem);
+  }
+
+  .portfolio-group {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+
+  .portfolio-card {
+    border-radius: 1.25rem;
   }
 }
 

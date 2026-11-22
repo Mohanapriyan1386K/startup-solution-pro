@@ -16,6 +16,15 @@ import restaurantAbout from "@/assets/portfolio/Resturent/image4.png";
 import restaurantContact from "@/assets/portfolio/Resturent/image5.png";
 import restaurantDashboard from "@/assets/portfolio/Resturent/image6.png";
 import restaurantFeedback from "@/assets/portfolio/Resturent/image7.png";
+import scanCentreHome from "@/assets/portfolio/cumbunScancenter/image1.png";
+import scanCentreGallery from "@/assets/portfolio/cumbunScancenter/image2.png";
+import scanCentreContact from "@/assets/portfolio/cumbunScancenter/image3.png";
+import scanCentreAppointment from "@/assets/portfolio/cumbunScancenter/image4.png";
+import bossfitHome from "@/assets/portfolio/Bossfit/image1.png";
+import bossfitPlans from "@/assets/portfolio/Bossfit/image2.png";
+import bossfitTrainers from "@/assets/portfolio/Bossfit/image3.png";
+import bossfitBmi from "@/assets/portfolio/Bossfit/image4.png";
+import bossfitContact from "@/assets/portfolio/Bossfit/image5.png";
 
 export interface Sample {
   id: string;
@@ -207,6 +216,80 @@ export const projects: Project[] = [
         "The feedback dashboard displays customer review cards with ratings for food, service, ambience, cleanliness, and value.",
         ["Feedback", "Ratings", "Admin"],
         ["Customer review cards", "Category ratings", "Recommendation status", "Review dates"],
+      ),
+    ],
+  },
+  {
+    id: "cumbum-united-scan-centre",
+    title: "Cumbum United Scan Centre",
+    category: "Healthcare Website",
+    image: scanCentreHome,
+    description: "A diagnostic scan centre website presenting imaging services, facility photos, contact information, and appointment requests.",
+    color: "from-blue-600 to-sky-400",
+    samples: [
+      createSample(
+        "Cumbum United Scan Centre", "scan-centre-home", "Diagnostic Centre Homepage", scanCentreHome,
+        "The homepage introduces the Cumbum scan centre with an imaging suite hero, MRI, CT, ultrasound and X-ray service highlights, and appointment and contact links.",
+        ["Homepage", "Healthcare", "Diagnostics"],
+        ["Diagnostic imaging introduction", "Scan service highlights", "Appointment and contact links", "WhatsApp contact action"],
+      ),
+      createSample(
+        "Cumbum United Scan Centre", "scan-centre-gallery", "Facility Gallery", scanCentreGallery,
+        "The gallery showcases the reception, MRI suite, CT scan room, ultrasound, digital X-ray, and reporting room in a labelled photo grid.",
+        ["Gallery", "Facilities", "Imaging"],
+        ["Facility photo grid", "Reception showcase", "Imaging room previews", "Reporting room preview"],
+      ),
+      createSample(
+        "Cumbum United Scan Centre", "scan-centre-contact", "Contact & Location", scanCentreContact,
+        "The contact section pairs address, phone, email, and opening hours with an embedded map to help visitors locate the scan centre.",
+        ["Contact", "Location", "Map"],
+        ["Contact information cards", "Opening hours", "Embedded location map", "Open in Maps action"],
+      ),
+      createSample(
+        "Cumbum United Scan Centre", "scan-centre-appointment", "Appointment Request", scanCentreAppointment,
+        "The appointment section presents a request form for patient name, mobile number, scan type, preferred date, and an optional message, followed by service and contact links.",
+        ["Appointments", "Forms", "Patient Enquiries"],
+        ["Patient contact fields", "Scan type selection", "Preferred date field", "Optional message field", "Service and contact footer"],
+      ),
+    ],
+  },
+  {
+    id: "bossfit",
+    title: "Boss Fitness",
+    category: "Fitness Website",
+    image: bossfitHome,
+    description: "A gym website showcasing strength training, membership plans, expert coaches, a BMI tool, and contact enquiries.",
+    color: "from-orange-500 to-red-500",
+    samples: [
+      createSample(
+        "Boss Fitness", "bossfit-home", "Fitness Homepage", bossfitHome,
+        "The homepage introduces Boss Fitness with a gym photo hero, training and tour actions, membership highlights, and navigation to plans, trainers, BMI, and contact sections.",
+        ["Homepage", "Fitness", "Training"],
+        ["Gym photo hero", "Training and tour actions", "Membership highlights", "Section navigation"],
+      ),
+      createSample(
+        "Boss Fitness", "bossfit-plans", "Membership Plans", bossfitPlans,
+        "The membership section compares Starter, Pro, and Elite plans with pricing, included benefits, and a highlighted popular plan.",
+        ["Membership", "Plans", "Pricing"],
+        ["Three membership tiers", "Plan pricing", "Benefit comparisons", "Popular plan highlight", "Get started actions"],
+      ),
+      createSample(
+        "Boss Fitness", "bossfit-trainers", "Expert Coaches", bossfitTrainers,
+        "The trainer section showcases coaches with portraits, training specialties, years of experience, and Instagram links.",
+        ["Trainers", "Coaching", "Team"],
+        ["Coach profile cards", "Trainer portraits", "Specialties and experience", "Instagram links"],
+      ),
+      createSample(
+        "Boss Fitness", "bossfit-bmi", "BMI Tool", bossfitBmi,
+        "The BMI section presents height and weight sliders alongside a circular result display and a category label.",
+        ["BMI", "Fitness", "Tool"],
+        ["Height slider", "Weight slider", "Circular BMI display", "Result category label"],
+      ),
+      createSample(
+        "Boss Fitness", "bossfit-contact", "Contact & Enquiries", bossfitContact,
+        "The contact section pairs the gym address, phone, and email with an enquiry form for visitor details and fitness goals.",
+        ["Contact", "Enquiries", "Forms"],
+        ["Gym contact details", "Name and email fields", "Optional phone field", "Fitness goals message", "Send message action"],
       ),
     ],
   },

@@ -7,6 +7,7 @@ import companyProfile from "@/assets/PorfolioMobilescreen/image3.png";
 import papakutty from "@/assets/PorfolioMobilescreen/image4.png";
 import easyJobs from "@/assets/PorfolioMobilescreen/image5.png";
 import scanCentre from "@/assets/PorfolioMobilescreen/image6.png";
+import bossFitness from "@/assets/PorfolioMobilescreen/image7.png";
 import "./MobilePortfolioPreview.css";
 
 const mobileScreens = [
@@ -16,6 +17,7 @@ const mobileScreens = [
   { image: papakutty, title: "Papakutty Creations" },
   { image: easyJobs, title: "Esay Jobs" },
   { image: scanCentre, title: "Cumbum United Scan Centre" },
+  { image: bossFitness, title: "Boss Fitness" },
 ];
 
 const MobilePortfolioPreview = () => {
